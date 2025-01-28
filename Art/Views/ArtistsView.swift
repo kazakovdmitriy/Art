@@ -31,9 +31,16 @@ struct ArtistsView: View {
                         name: artist.name,
                         bio: artist.bio
                     )
-                    .onTapGesture {
-                        print("Tapped on \(artist.name)")
-                    }
+                    .overlay(
+                        NavigationLink(
+                            "",
+                            destination: BiographyView(
+                                imageName: artist.image,
+                                artistName: artist.name
+                            )
+                        )
+                        .opacity(0)
+                    )
                     .listRowSeparator(.hidden)
                 }
             }
