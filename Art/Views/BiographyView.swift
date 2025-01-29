@@ -13,10 +13,12 @@ struct BiographyView: View {
     
     private let imageName: String
     private let artistName: String
+    private let bio: String
     
-    init(imageName: String, artistName: String) {
+    init(imageName: String, artistName: String, bio: String) {
         self.imageName = imageName
         self.artistName = artistName
+        self.bio = bio
     }
     
     var body: some View {
@@ -55,12 +57,20 @@ struct BiographyView: View {
                     .safeAreaPadding(.top, 58)
                 }
                 
-                Text("Biography")
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundStyle(.titleMain)
-                    .padding(.top, 24)
-                    .padding(.leading, 26)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                VStack {
+                    Text("Biography")
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundStyle(.titleMain)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Text(bio)
+                        .font(.system(size: 16, weight: .regular))
+                        .foregroundStyle(.mainText)
+                        .padding(.top, 8)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .padding(.top, 24)
+                .padding(.horizontal, 20)
             }
         }
         .ignoresSafeArea(.all, edges: .top)
@@ -69,5 +79,9 @@ struct BiographyView: View {
 }
 
 #Preview {
-    BiographyView(imageName: "0", artistName: "Pablo Picasso")
+    BiographyView(
+        imageName: "2",
+        artistName: "Pablo Picasso",
+        bio: "Pablo Ruiz y Picasso (25 October 1881 – 8 April 1973), also known as Pablo Picasso, was a Spanish painter, sculptor, printmaker, ceramicist, stage designer, poet and playwright who spent most of his adult life in France. Pablo Ruiz y Picasso (25 October 1881 – 8 April 1973), also known as Pablo Picasso, was a Spanish painter, sculptor, printmaker, ceramicist, stage designer, poet and playwright who spent most of his adult life in France."
+    )
 }
