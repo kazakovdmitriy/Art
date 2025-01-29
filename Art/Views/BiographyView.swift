@@ -14,11 +14,13 @@ struct BiographyView: View {
     private let imageName: String
     private let artistName: String
     private let bio: String
+    private let works: [Work]
     
-    init(imageName: String, artistName: String, bio: String) {
+    init(imageName: String, artistName: String, bio: String, works: [Work]) {
         self.imageName = imageName
         self.artistName = artistName
         self.bio = bio
+        self.works = works
     }
     
     var body: some View {
@@ -71,6 +73,35 @@ struct BiographyView: View {
                 }
                 .padding(.top, 24)
                 .padding(.horizontal, 20)
+                
+                VStack {
+                    Text("Works")
+                        .font(.system(size: 18, weight: .semibold))
+                        .foregroundStyle(.titleMain)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    ForEach(works, id: \.title) { work in
+                        WorkCardView(
+                            title: work.title,
+                            imageName: work.image
+                        )
+                        .padding(.bottom, 26)
+//                        .overlay(
+//                            NavigationLink(
+//                                "",
+//                                destination: BiographyView(
+//                                    imageName: artist.image,
+//                                    artistName: artist.name,
+//                                    bio: artist.bio
+//                                )
+//                            )
+//                            .opacity(0)
+//                        )
+                        .listRowSeparator(.hidden)
+                    }
+                }
+                .padding(.top, 24)
+                .padding(.horizontal, 20)
             }
         }
         .ignoresSafeArea(.all, edges: .top)
@@ -80,8 +111,12 @@ struct BiographyView: View {
 
 #Preview {
     BiographyView(
-        imageName: "2",
-        artistName: "Pablo Picasso",
-        bio: "Pablo Ruiz y Picasso (25 October 1881 – 8 April 1973), also known as Pablo Picasso, was a Spanish painter, sculptor, printmaker, ceramicist, stage designer, poet and playwright who spent most of his adult life in France. Pablo Ruiz y Picasso (25 October 1881 – 8 April 1973), also known as Pablo Picasso, was a Spanish painter, sculptor, printmaker, ceramicist, stage designer, poet and playwright who spent most of his adult life in France."
+        imageName: "3",
+        artistName: "Georgia O'Keeffe",
+        bio: "Georgia Totto O'Keeffe (November 15, 1887 – March 6, 1986) was an American artist. She is best known for her paintings of enlarged flowers, New York skyscrapers, and New Mexico landscapes. O'Keeffe has been recognized as the 'Mother of American modernism'.",
+        works: [
+            Work(title: "Lalalla1", image: "Georgia2", info: "Info"),
+            Work(title: "Lalalla1", image: "Georgia1", info: "Info"),
+        ]
     )
 }

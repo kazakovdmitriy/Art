@@ -37,7 +37,8 @@ struct ArtistsView: View {
                             destination: BiographyView(
                                 imageName: artist.image,
                                 artistName: artist.name,
-                                bio: artist.bio
+                                bio: artist.bio,
+                                works: artist.works
                             )
                         )
                         .opacity(0)
