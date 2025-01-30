@@ -81,22 +81,19 @@ struct BiographyView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
                     ForEach(works, id: \.title) { work in
-                        WorkCardView(
-                            title: work.title,
-                            imageName: work.image
-                        )
-                        .padding(.bottom, 26)
-//                        .overlay(
-//                            NavigationLink(
-//                                "",
-//                                destination: BiographyView(
-//                                    imageName: artist.image,
-//                                    artistName: artist.name,
-//                                    bio: artist.bio
-//                                )
-//                            )
-//                            .opacity(0)
-//                        )
+                        NavigationLink(
+                            destination: WorkInfoView(
+                                title: work.title,
+                                imageName: work.image,
+                                info: work.info
+                            )
+                        ) {
+                            WorkCardView(
+                                title: work.title,
+                                imageName: work.image
+                            )
+                            .padding(.bottom, 26)
+                        }
                         .listRowSeparator(.hidden)
                     }
                 }

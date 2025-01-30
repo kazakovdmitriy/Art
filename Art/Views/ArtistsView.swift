@@ -14,7 +14,6 @@ struct ArtistsView: View {
     
     var body: some View {
         NavigationView {
-            
             List {
                 if viewModel.isLoading {
                     ProgressView()
