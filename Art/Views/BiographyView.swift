@@ -71,13 +71,18 @@ struct BiographyView: View {
                         .foregroundColor(.black)
                     
                     ForEach(works, id: \.title) { work in
-                        NavigationLink(destination: WorkInfoView(title: work.title, imageName: work.image, info: work.info)) {
+                        NavigationLink(destination: WorkInfoView(
+                            title: work.title,
+                            imageName: work.image,
+                            info: work.info)
+                        ) {
                             WorkCardView(title: work.title, imageName: work.image)
                         }
                         .padding(.bottom, 26)
                     }
+
                 }
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 24)
                 .padding(.top, 24)
             }
         }
@@ -93,8 +98,10 @@ struct BiographyView: View {
         artistName: "Georgia O'Keeffe",
         bio: "Georgia Totto O'Keeffe (November 15, 1887 – March 6, 1986) was an American artist. She is best known for her paintings of enlarged flowers, New York skyscrapers, and New Mexico landscapes. O'Keeffe has been recognized as the 'Mother of American modernism'.",
         works: [
-            Work(title: "Lalalla1", image: "Georgia2", info: "Info"),
-            Work(title: "Lalalla1", image: "Georgia1", info: "Info"),
+            Work(title: "Oriental Poppies", image: "Georgia1", info: "Info"),
+            Work(title: "Jimson Weed, White Flower No. 1", image: "Georgia2", info: "Info"),
+            Work(title: "Sky Above Clouds IV", image: "Georgia3", info: "Info"),
+            Work(title: "Radiator Building — Night, New York", image: "Georgia4", info: "Info"),
         ]
     )
 }

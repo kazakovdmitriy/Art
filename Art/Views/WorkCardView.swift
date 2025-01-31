@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct WorkCardView: View {
-    
     private let title: String
     private let imageName: String
     
@@ -18,31 +17,33 @@ struct WorkCardView: View {
     }
     
     var body: some View {
-        VStack {
-            Image(imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(height: 150)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.white, lineWidth: 2)
-                )
-                .background(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(.border, lineWidth: 3)
-                )
-                .padding(.horizontal, 2)
-                .padding(.bottom, 10)
+        VStack(alignment: .leading) {
+            GeometryReader { geometry in
+                Image(imageName)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: geometry.size.width, height: 150)
+                    .clipped()
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.white, lineWidth: 2)
+                    )
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray.opacity(0.5), lineWidth: 3)
+                    )
+            }
+            .frame(height: 150)
             
             Text(title)
                 .font(.system(size: 16, weight: .regular))
-                .foregroundStyle(.black)
+                .foregroundColor(.black)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 }
 
 #Preview {
-    WorkCardView(title: "LAlalalala", imageName: "Georgia2")
+    WorkCardView(title: "LAlalalala", imageName: "Georgia3")
 }
