@@ -52,6 +52,7 @@ struct ArtistsView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
                         // Действие кнопки
+                        print("Как будто добавили нового художника")
                     }) {
                         Text("+")
                     }
