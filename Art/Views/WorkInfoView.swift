@@ -73,9 +73,8 @@ struct WorkInfoView: View {
         .ignoresSafeArea(.all, edges: .top)
         .navigationBarBackButtonHidden()
         
-        Button(action: {
-            // Развернуть
-        }) {
+        
+        NavigationLink(destination: FullImageView(imageName: imageName)) {
             Text("Развернуть")
                 .font(.system(size: 16, weight: .semibold))
                 .foregroundColor(.white)
